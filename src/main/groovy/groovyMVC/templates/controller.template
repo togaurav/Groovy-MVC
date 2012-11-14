@@ -74,7 +74,7 @@ public class ${model}Controller {
 				println "		}"
 				println ""
 				println "		${model} current${model} = ${modelLowerCase}Service.findOne(id);"
-				println "		//TODO: Loop through model and populate setters"
+				println "		//TODO: Populate model from ${model} parameters"
 				println ""
 				println "		${modelLowerCase}Service.save(${modelLowerCase});"
 				println ""
