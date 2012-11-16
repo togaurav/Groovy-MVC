@@ -5,15 +5,14 @@ import groovy.text.SimpleTemplateEngine
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
 
-	print "Enter Model Name:"
+	print "Enter Service Name:"
 	def modelName = br.readLine()
 
 	println ""
-	println "Generating ${modelName}Controller ...."
+	println "Generating ${modelName}Service ...."
 
-	def actions = ["list", "create", "show", "edit", "save", "update"]
-	def binding = [model:modelName, actions:actions]
-	def templateFile = new File(".\\src\\main\\groovy\\groovyMVC\\templates\\controller.template")
+	def binding = [model:modelName]
+	def templateFile = new File(".\\src\\main\\groovy\\groovyMVC\\templates\\service.template")
 	def engine = new SimpleTemplateEngine()
 	def template = engine.createTemplate(templateFile)
 	def writable = template.make(binding)
@@ -22,7 +21,7 @@ import groovy.text.SimpleTemplateEngine
 	println writable
 
 	//	Write out the file
-	File destFile = new File(".\\src\\main\\java\\groovyMVC\\controllers\\${modelName}Controller.java")
+	File destFile = new File(".\\src\\main\\java\\groovyMVC\\service\\${modelName}Service.java")
 
 	destFile.withWriter {Writer out ->
 		writable.writeTo(out)
